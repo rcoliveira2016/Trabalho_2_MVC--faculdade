@@ -7,18 +7,18 @@ namespace System
 {
     public static class ConstsWeb
     {
-        public static readonly string AcaoCadastar = "Cadastro";
-        public static readonly string DescricaoAcaoCadastar = "Cadastrar";
+        public const string AcaoCadastar = "Cadastro";
+        public const string DescricaoAcaoCadastar = "Cadastrar";
 
-        public static readonly string AcaoEditar = "Editar";
-        public static readonly string DescricaoAcaoEditar = "Editar";
+        public const string AcaoEditar = "Editar";
+        public const string DescricaoAcaoEditar = "Editar";
 
-        public static readonly string AcaoDeletar = "Deletar";
-        public static readonly string DescricaoAcaoDeletar = "Deletar";
+        public const string AcaoDeletar = "Deletar";
+        public const string DescricaoAcaoDeletar = "Deletar";
 
-        public static readonly string AcaoDetalhes = "Detalhes";
-        public static readonly string DescricaoAcaoDetalhes = "Detalhes";
+        public const string AcaoDetalhes = "Detalhes";
+        public const string DescricaoAcaoDetalhes = "Detalhes";
 
-        public static readonly string DescricaoVoltarListagem = "Voltar para Listagem";
+        public const string DescricaoVoltarListagem = "Voltar para Listagem";
     }
 }

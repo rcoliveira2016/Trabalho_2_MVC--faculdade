@@ -130,6 +130,8 @@
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\Common\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServicosController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Dominio\Context\BancoDadosContexto.cs" />
     <Compile Include="Dominio\Context\Map\ClienteMap.cs" />
     <Compile Include="Dominio\Context\Map\FormaPagamentoMap.cs" />
@@ -217,6 +219,14 @@
     <Content Include="Views\Clientes\Deletar.cshtml" />
     <Content Include="Views\Clientes\Detalhes.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
+    <Content Include="Views\Servicos\Cadastro.cshtml" />
+    <Content Include="Views\Servicos\Deletar.cshtml" />
+    <Content Include="Views\Servicos\Detalhes.cshtml" />
+    <Content Include="Views\Servicos\Index.cshtml" />
+    <Content Include="Views\Usuarios\Cadastro.cshtml" />
+    <Content Include="Views\Usuarios\Deletar.cshtml" />
+    <Content Include="Views\Usuarios\Detalhes.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

@@ -14,6 +14,7 @@ namespace Trabalho_2_MVC.Dominio.Entidades
         [Required()]
         public string Login { get; set; }
         [Required()]
+        [DataType(DataType.Password)]
         public string Senha { get; set; }
         public virtual ICollection<OrdemServico> OrdensServicos { get; set; }
 

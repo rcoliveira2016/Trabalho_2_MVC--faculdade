@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Web.Mvc;
 using Trabalho_2_MVC.Dominio.Entidades;
 using Trabalho_2_MVC.Dominio.Infra.Factory;
@@ -95,7 +96,7 @@ namespace Trabalho_2_MVC.Controllers
         [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
         public ActionResult DeletarConfirmed(long id)
-        {
+        {            
             clienteRepositorio.Deletar(id);
             return RedirectToAction("Index");
         }

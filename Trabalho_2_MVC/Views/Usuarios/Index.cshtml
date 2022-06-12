@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Trabalho_2_MVC.Dominio.Entidades.Usuario>
+
+@{
+    ViewBag.Title = "Listagem";
+}
+
+<h2>Listagem</h2>
+
+<p>
+    @Html.ActionLink(ConstsWeb.DescricaoAcaoCadastar, ConstsWeb.AcaoCadastar)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeCompleto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+            <td>
+                @Html.ActionLink(ConstsWeb.DescricaoAcaoEditar, ConstsWeb.AcaoEditar, new { id = item.Id }) |
+                @Html.ActionLink(ConstsWeb.DescricaoAcaoDetalhes, ConstsWeb.AcaoDetalhes, new { id = item.Id }) |
+                @Html.ActionLink(ConstsWeb.DescricaoAcaoDeletar, ConstsWeb.AcaoDeletar, new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,48 @@
+﻿@model Trabalho_2_MVC.Dominio.Entidades.Servico
+
+@{
+    ViewBag.Title = "Deletar";
+}
+
+<h2>Deletar</h2>
+
+<h3>Deseja deletar?</h3>
+<div>
+    <h4>Serviço</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorUnitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorUnitario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type = "submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink(ConstsWeb.DescricaoVoltarListagem, "Index")
+        </div>
+    }
+</div>
