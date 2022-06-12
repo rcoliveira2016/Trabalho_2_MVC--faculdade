@@ -9,7 +9,12 @@ namespace Trabalho_2_MVC.Controllers
 {
     public class UsuariosController : CommonController
     {
-        private readonly IUsuariosRepositorio usuariosRepositorio = RepositorioFactory.CriarUsuarios();
+        private readonly IUsuariosRepositorio usuariosRepositorio;
+
+        public UsuariosController(IUsuariosRepositorio usuariosRepositorio)
+        {
+            this.usuariosRepositorio = usuariosRepositorio;
+        }
 
         public ActionResult Index()
         {

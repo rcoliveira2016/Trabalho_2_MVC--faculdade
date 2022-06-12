@@ -9,8 +9,11 @@ namespace Trabalho_2_MVC.Controllers
 {
     public class ClientesController : CommonController
     {
-        private readonly IClientesRepositorio clienteRepositorio = RepositorioFactory.CriarClientes();
-
+        private readonly IClientesRepositorio clienteRepositorio;
+        public ClientesController(IClientesRepositorio clienteRepositorio)
+        {
+            this.clienteRepositorio = clienteRepositorio;
+        }
         public ActionResult Index()
         {
             return View(clienteRepositorio.ListaTodos());
@@ -34,7 +37,7 @@ namespace Trabalho_2_MVC.Controllers
 
         public ActionResult Cadastro()
         {
-            return View("Cadastro", new Cliente());
+            return View("Cadastro", new Cliente() { DataNascimento = DateTime.Now});
         }
 
 

@@ -8,6 +8,10 @@ namespace Trabalho_2_MVC.Controllers
 {
     public class HomeController : CommonController
     {
+        public HomeController()
+        {
+
+        }
         public ActionResult Index()
         {
             return View();

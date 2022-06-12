@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Trabalho_2_MVC.Dominio.Infra.Ioc;
 
 namespace Trabalho_2_MVC
 {
@@ -16,6 +17,13 @@ namespace Trabalho_2_MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            CriarInjecaoDepedencia();
+        }
+
+        private void CriarInjecaoDepedencia()
+        {
+            RegisterService.Registar();
         }
     }
 }

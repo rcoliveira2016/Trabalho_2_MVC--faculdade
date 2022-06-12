@@ -9,7 +9,11 @@ namespace Trabalho_2_MVC.Controllers
 {
     public class ServicosController : CommonController
     {
-        private readonly IServicosRepositorio serviosRepositorio = RepositorioFactory.CriarServicos();
+        private readonly IServicosRepositorio serviosRepositorio;
+        public ServicosController(IServicosRepositorio serviosRepositorio)
+        {
+            this.serviosRepositorio = serviosRepositorio;
+        }
 
         public ActionResult Index()
         {

@@ -53,6 +53,15 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SimpleInjector, Version=5.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.5.3.3\lib\net461\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.5.0.0\lib\net45\SimpleInjector.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.Mvc.5.0.0\lib\net45\SimpleInjector.Integration.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -157,6 +166,8 @@
     <Compile Include="Dominio\Infra\Constantes\ConstsWeb.cs" />
     <Compile Include="Dominio\Infra\Extensoes\ExtensoesPadrao.cs" />
     <Compile Include="Dominio\Infra\Factory\RepositorioFactory.cs" />
+    <Compile Include="Dominio\Infra\Ioc\InMemory.cs" />
+    <Compile Include="Dominio\Infra\Ioc\RegisterService.cs" />
     <Compile Include="Dominio\Interfaces\Data\IOrdensServicosRepositorio.cs" />
     <Compile Include="Dominio\Interfaces\Data\IUsuariosRepositorio.cs" />
     <Compile Include="Dominio\Interfaces\Data\IServicosRepositorio.cs" />
