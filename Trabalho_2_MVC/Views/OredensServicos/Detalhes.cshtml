@@ -1,5 +1,5 @@
 ﻿@model Trabalho_2_MVC.Dominio.Entidades.OrdemServico
-
+@using Trabalho_2_MVC.Dominio.Infra.Extensoes
 
 @{
     ViewBag.Title = "Detalhe";
@@ -9,11 +9,11 @@
 
 
 <div>
-    <h4>OrdemServico</h4>
+    <h4>Ordem de serviço</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Cliente.Nome)
+            Clinete
         </dt>
 
         <dd>
@@ -21,7 +21,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Servico.Nome)
+            Serviço
         </dt>
 
         <dd>
@@ -29,7 +29,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Usuario.NomeCompleto)
+            Usuario
         </dt>
 
         <dd>
@@ -45,11 +45,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DataAbertura)
+            Data de Abertura
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.DataAbertura)
+        </dd>
+
+        <dt>
+            Valor Total
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorTotal)
+        </dd>
+
+        <dt>
+            Tipo Pagamento
+        </dt>
+
+        <dd>
+            @Model.Pagamento.FormaPagamento.Tipo.GetEnumDescription()
         </dd>
 
     </dl>

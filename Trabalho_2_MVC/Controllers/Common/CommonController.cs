@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using Trabalho_2_MVC.Dominio.Entidades;
 
 namespace Trabalho_2_MVC.Controllers
 {
@@ -35,6 +36,14 @@ namespace Trabalho_2_MVC.Controllers
         protected void AdicionarSucesso(string texto)
         {
             MensagensSucessos.Add(texto);
+        }
+
+        protected void ValidarStateModel<T>(T entidade) where T : Entidade
+        {
+            if (!entidade.ValidarDados(out var erros))
+            {
+                erros.ForEach(e => ModelState.AddModelError(string.Empty, e));
+            }
         }
     }
 }

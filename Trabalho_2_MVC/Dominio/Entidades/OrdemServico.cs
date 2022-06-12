@@ -36,6 +36,16 @@ namespace Trabalho_2_MVC.Dominio.Entidades
             Pagamento.ValorTotal = CalcularValorTotal();
         }
 
+        public void SetarValorParaEditar()
+        {
+            var ordensServicosRepositorio = RepositorioFactory.CriarOrdensServicos();
+            var ordemServicoExistente = ordensServicosRepositorio.BuscarPorId(Id);
+
+            DataAbertura = ordemServicoExistente.DataAbertura;
+            SetarValorParaSalvar();
+        }
+
+
         public double CalcularValorTotal()
         {
             if(IdServico==0)

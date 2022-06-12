@@ -8,7 +8,7 @@
 <h2>Cadastro</h2>
 
 
-@using (Html.BeginForm(action))
+@using (Html.BeginForm(action, "OredensServicos", FormMethod.Post, new { id = "form-cadastro" }))
 {
     @Html.AntiForgeryToken()
 
@@ -123,78 +123,76 @@
             Pix:3,
         };
 
-        $(document).ready(function () {
-            var $formCadastro = $("form");
-            var $divTipoCartao = $("#DivTipoCartao"),
-                $divTipoBoleto = $("#DivTipoBoleto"),
-                $divTipoPix = $("#DivTipoPix"),
-                $TipoPagamento = $("#TipoPagamento");
+        var $formCadastro = $("#form-cadastro");
+        var $divTipoCartao = $("#DivTipoCartao"),
+            $divTipoBoleto = $("#DivTipoBoleto"),
+            $divTipoPix = $("#DivTipoPix"),
+            $TipoPagamento = $("#TipoPagamento");
 
-            var mudarEstadoDivsTiposPagamentos = function () {
-                $divTipoCartao.hide();
-                $divTipoBoleto.hide();
-                $divTipoPix.hide();
-                switch (parseInt($TipoPagamento.val())) {
-                    case eTipoFormaPagamento.Cartao:
-                        $divTipoCartao.show();
-                        break;
-                    case eTipoFormaPagamento.Boleto:
-                        $("#CodigoBarra").val(parametrosInit.viewModel.CodigoBarra || RandomHelper(10000000000, 99999999999))
-                        $divTipoBoleto.show();
-                        break;
-                    case eTipoFormaPagamento.Pix:
-                        $("#CodigoPix").val(parametrosInit.viewModel.CodigoPix || uuidv4())
-                        $divTipoPix.show();
-                        break;
-                }
+        var mudarEstadoDivsTiposPagamentos = function () {
+            $divTipoCartao.hide();
+            $divTipoBoleto.hide();
+            $divTipoPix.hide();
+            switch (parseInt($TipoPagamento.val())) {
+                case eTipoFormaPagamento.Cartao:
+                    $divTipoCartao.show();
+                    break;
+                case eTipoFormaPagamento.Boleto:
+                    $("#CodigoBarra").val(parametrosInit.viewModel.CodigoBarra || RandomHelper(10000000000, 99999999999))
+                    $divTipoBoleto.show();
+                    break;
+                case eTipoFormaPagamento.Pix:
+                    $("#CodigoPix").val(parametrosInit.viewModel.CodigoPix || uuidv4())
+                    $divTipoPix.show();
+                    break;
             }
+        }
 
-            $formCadastro.validate({
-                rules: {
-                    IdCliente: {
-                        required: true
-                    },
-                    IdUsuario: {
-                        required: true
-                    },
-                    IdServico: {
-                        required: true
-                    },
-                    Unitario: {
-                        required: true
-                    },
-                    TipoPagamento: {
-                        required: true
-                    },
-                    NumeroCartão: {
-                        required: function () {
-                            return parseInt($TipoPagamento.val()) == eTipoFormaPagamento.Cartao
-                        }
-                    },
-                    CodigoSegurança: {
-                        required: function () {
-                            return parseInt($TipoPagamento.val()) == eTipoFormaPagamento.Cartao
-                        }
-                    },
-                    CodigoBarra: {
-                        required: function () {
-                            return parseInt($TipoPagamento.val()) == eTipoFormaPagamento.Boleto
-                        }
-                    },
-                    CodigoPix: {
-                        required: function () {
-                            return parseInt($TipoPagamento.val()) == eTipoFormaPagamento.Pix
-                        }
+        $formCadastro.validate({
+            rules: {
+                IdCliente: {
+                    required: true
+                },
+                IdUsuario: {
+                    required: true
+                },
+                IdServico: {
+                    required: true
+                },
+                Unitario: {
+                    required: true
+                },
+                TipoPagamento: {
+                    required: true
+                },
+                NumeroCartão: {
+                    required: function () {
+                        return parseInt($TipoPagamento.val()) == eTipoFormaPagamento.Cartao
+                    }
+                },
+                CodigoSegurança: {
+                    required: function () {
+                        return parseInt($TipoPagamento.val()) == eTipoFormaPagamento.Cartao
+                    }
+                },
+                CodigoBarra: {
+                    required: function () {
+                        return parseInt($TipoPagamento.val()) == eTipoFormaPagamento.Boleto
+                    }
+                },
+                CodigoPix: {
+                    required: function () {
+                        return parseInt($TipoPagamento.val()) == eTipoFormaPagamento.Pix
                     }
                 }
-            });
+            },
+        });
 
+        mudarEstadoDivsTiposPagamentos();
+
+        $TipoPagamento.on('change', function () {
             mudarEstadoDivsTiposPagamentos();
-
-            $TipoPagamento.on('change', function () {
-                mudarEstadoDivsTiposPagamentos();
-            })
-
         })
+
     </script>
 }

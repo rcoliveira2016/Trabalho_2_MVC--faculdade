@@ -13,7 +13,7 @@ using Trabalho_2_MVC.ViewModels;
 namespace Trabalho_2_MVC.Controllers
 {
 
-    public class OredensServicosController : Controller
+    public class OredensServicosController : CommonController
     {
         private readonly IOrdensServicosRepositorio ordensServicosRepositorio = RepositorioFactory.CriarOrdensServicos();
         private readonly IClientesRepositorio clienteRepositorio = RepositorioFactory.CriarClientes();
@@ -52,9 +52,10 @@ namespace Trabalho_2_MVC.Controllers
         public ActionResult Cadastro(OrdemServicoViewModel ordemServicoViewModel)
         {
             var ordemServico = MontarEntidadeOrdemServico(ordemServicoViewModel);
+            ordemServico.SetarValorParaSalvar();
+            ValidarStateModel(ordemServico);
             if (ModelState.IsValid)
             {
-                ordemServico.SetarValorParaSalvar();
                 ordensServicosRepositorio.Adiciona(ordemServico);
                 return RedirectToAction("Index");
             }
@@ -83,9 +84,10 @@ namespace Trabalho_2_MVC.Controllers
         public ActionResult Editar(OrdemServicoViewModel ordemServicoViewModel)
         {
             var ordemServico = MontarEntidadeOrdemServico(ordemServicoViewModel);
+            ordemServico.SetarValorParaEditar();
+            ValidarStateModel(ordemServico);
             if (ModelState.IsValid)
             {
-                ordemServico.SetarValorParaSalvar();
                 ordensServicosRepositorio.Alterar(ordemServico);
                 return RedirectToAction("Index");
             }
@@ -140,10 +142,10 @@ namespace Trabalho_2_MVC.Controllers
         {
             return new SelectListItem[] { new SelectListItem() { Value = "", Text = "" } }.Concat(
                 opcoes.Select(x => new SelectListItem()
-                    {
-                        Text = x.DescricaoCombo,
-                        Value = x.Id.ToString(),
-                    })
+                {
+                    Text = x.DescricaoCombo,
+                    Value = x.Id.ToString(),
+                })
                 );
         }
 
@@ -165,8 +167,10 @@ namespace Trabalho_2_MVC.Controllers
                 Unitario = ordemServicoViewModel.Unitario,
                 Pagamento = new Pagamento()
                 {
+                    Id = ordemServicoViewModel.Id,
                     FormaPagamento = new FormaPagamento()
                     {
+                        Id = ordemServicoViewModel.Id,
                         CodigoBarra = ordemServicoViewModel.CodigoBarra,
                         CodigoSegurança = ordemServicoViewModel.CodigoSegurança,
                         NumeroCartão = ordemServicoViewModel.NumeroCartão,

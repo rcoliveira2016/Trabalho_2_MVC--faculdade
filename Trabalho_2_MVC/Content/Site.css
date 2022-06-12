@@ -26,3 +26,16 @@ textarea {
 .form-group label.error {
     color: red !important;
 }
+body{
+    height:100vh;
+}
+
+footer{
+   position: absolute;
+   bottom:0   
+}
+
+.form-control[readonly=False], .form-control[readonly=false] {
+    background-color: #fff;
+    opacity: 1;
+}
