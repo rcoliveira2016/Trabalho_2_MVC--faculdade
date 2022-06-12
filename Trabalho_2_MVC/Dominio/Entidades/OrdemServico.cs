@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Trabalho_2_MVC.Dominio.Infra;
+using Trabalho_2_MVC.Dominio.Infra.Factory;
 
 namespace Trabalho_2_MVC.Dominio.Entidades
 {
@@ -41,9 +42,19 @@ namespace Trabalho_2_MVC.Dominio.Entidades
                 return 0;
 
             if (Servico == null)
-                return RepositorioSingleton.ServicoRepositorio.BuscarPorId(IdServico).ValorUnitario * Unitario;
+            {
+                return ObterValorUnitarioServico() * Unitario;
+            }
 
             return Servico.ValorUnitario * Unitario;
+        }
+        
+        public double ObterValorUnitarioServico()
+        {
+            var servivoRepository = RepositorioFactory.CriarServicos();
+            var valorUnitario = servivoRepository.BuscarPorId(IdServico).ValorUnitario;
+            servivoRepository.Dispose();
+            return valorUnitario;
         }
 
         public override bool ValidarDados(out List<string> mensagens)

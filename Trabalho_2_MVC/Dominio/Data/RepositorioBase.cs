@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using Trabalho_2_MVC.Dominio.Context;
 using Trabalho_2_MVC.Dominio.Entidades;
+using Trabalho_2_MVC.Dominio.Interfaces.Data;
 
 namespace Trabalho_2_MVC.Dominio.Data
 {
