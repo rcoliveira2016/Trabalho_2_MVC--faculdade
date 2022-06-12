@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace Trabalho_2_MVC.Controllers.Common
+namespace Trabalho_2_MVC.Controllers
 {
     public abstract class CommonController : Controller
     {

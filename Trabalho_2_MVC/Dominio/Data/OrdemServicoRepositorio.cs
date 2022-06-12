@@ -4,10 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Trabalho_2_MVC.Dominio.Entidades;
+using Trabalho_2_MVC.Dominio.Interfaces.Data;
 
 namespace Trabalho_2_MVC.Dominio.Data
 {
-    public class OrdemServicoRepositorio : RepositorioBase<OrdemServico>
+    public class OrdemServicoRepositorio : RepositorioBase<OrdemServico>, IOrdensServicosRepositorio
     {
         public override void Deletar(long id)
         {

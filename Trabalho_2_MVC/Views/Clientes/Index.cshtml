@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Trabalho_2_MVC.Dominio.Entidades.Cliente>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listagem";
 }
 
-<h2>Index</h2>
+<h2>Listagem</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(ConstsWeb.DescricaoAcaoCadastar, ConstsWeb.AcaoCadastar)
 </p>
 <table class="table">
     <tr>
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.Telefone)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink(ConstsWeb.DescricaoAcaoEditar, ConstsWeb.AcaoEditar, new { id=item.Id }) |
+            @Html.ActionLink(ConstsWeb.DescricaoAcaoDetalhes, ConstsWeb.AcaoDetalhes, new { id=item.Id }) |
+            @Html.ActionLink(ConstsWeb.DescricaoAcaoDeletar, ConstsWeb.AcaoDeletar, new { id=item.Id })
         </td>
     </tr>
 }

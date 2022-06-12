@@ -1,32 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
-using Trabalho_2_MVC.Dominio.Context;
 using Trabalho_2_MVC.Dominio.Entidades;
-using static Trabalho_2_MVC.Dominio.Infra.RepositorioSingleton;
+using Trabalho_2_MVC.Dominio.Infra.Factory;
+using Trabalho_2_MVC.Dominio.Interfaces.Data;
+
 namespace Trabalho_2_MVC.Controllers
 {
-    public class ClientesController : Controller
+    public class ClientesController : CommonController
     {
-        
+        private readonly IClientesRepositorio clienteRepositorio = RepositorioFactory.CriarClientes();
+
         public ActionResult Index()
         {
-            return View(ClienteRepositorio.ListaTodos());
+            return View(clienteRepositorio.ListaTodos());
         }
 
-        
-        public ActionResult Details(long? id)
+
+        public ActionResult Detalhes(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = ClienteRepositorio.BuscarPorId(id.Value);
+            Cliente cliente = clienteRepositorio.BuscarPorId(id.Value);
             if (cliente == null)
             {
                 return HttpNotFound();
@@ -34,61 +30,61 @@ namespace Trabalho_2_MVC.Controllers
             return View(cliente);
         }
 
-        
-        public ActionResult Create()
+
+        public ActionResult Cadastro()
         {
-            return View();
+            return View("Cadastro", new Cliente());
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,CPF,DataNascimento,Endereco,Telefone")] Cliente cliente)
+        public ActionResult Cadastro([Bind(Include = "Id,Nome,CPF,DataNascimento,Endereco,Telefone")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                ClienteRepositorio.Adiciona(cliente);
+                clienteRepositorio.Adiciona(cliente);
                 return RedirectToAction("Index");
             }
 
             return View(cliente);
         }
 
-        
-        public ActionResult Edit(long? id)
+
+        public ActionResult Editar(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = ClienteRepositorio.BuscarPorId(id.Value);
+            Cliente cliente = clienteRepositorio.BuscarPorId(id.Value);
             if (cliente == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View("Cadastro", cliente);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,CPF,DataNascimento,Endereco,Telefone")] Cliente cliente)
+        public ActionResult Editar([Bind(Include = "Id,Nome,CPF,DataNascimento,Endereco,Telefone")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                ClienteRepositorio.Alterar(cliente);
+                clienteRepositorio.Alterar(cliente);
                 return RedirectToAction("Index");
             }
             return View(cliente);
         }
 
-        
-        public ActionResult Delete(long? id)
+
+        public ActionResult Deletar(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = ClienteRepositorio.BuscarPorId(id.Value);
+            Cliente cliente = clienteRepositorio.BuscarPorId(id.Value);
             if (cliente == null)
             {
                 return HttpNotFound();
@@ -96,21 +92,22 @@ namespace Trabalho_2_MVC.Controllers
             return View(cliente);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(long id)
-        {            
-            ClienteRepositorio.Deletar(id);
+        public ActionResult DeletarConfirmed(long id)
+        {
+            clienteRepositorio.Deletar(id);
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
+            base.Dispose(disposing);
             if (disposing)
             {
-                db.Dispose();
+                clienteRepositorio.Dispose();
             }
-            base.Dispose(disposing);
         }
+
     }
 }

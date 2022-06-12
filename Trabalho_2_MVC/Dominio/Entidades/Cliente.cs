@@ -14,6 +14,8 @@ namespace Trabalho_2_MVC.Dominio.Entidades
         public string CPF { get; set; }
         [Display(Name = "Data de nascimento")]
         [Required()]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}",ApplyFormatInEditMode =true)]
+        [DataType(DataType.Date)]
         public DateTime DataNascimento { get; set; }
         [Display(Name = "Endereço")]
         [Required()]

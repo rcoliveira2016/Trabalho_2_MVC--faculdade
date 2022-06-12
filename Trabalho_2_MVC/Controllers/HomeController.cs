@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Trabalho_2_MVC.Controllers.Common;
 
 namespace Trabalho_2_MVC.Controllers
 {
