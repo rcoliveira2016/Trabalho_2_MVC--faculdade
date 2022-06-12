@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Trabalho_2_MVC.Dominio.Entidades.OrdemServico>
+
+@{
+    ViewBag.Title = "Listagem";
+}
+
+<h2>Listagem</h2>
+
+<p>
+    @Html.ActionLink(ConstsWeb.DescricaoAcaoCadastar, ConstsWeb.AcaoCadastar)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Servico.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.NomeCompleto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unitario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataAbertura)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Servico.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.NomeCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unitario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataAbertura)
+            </td>
+            <td>
+                @Html.ActionLink(ConstsWeb.DescricaoAcaoEditar, ConstsWeb.AcaoEditar, new { id = item.Id }) |
+                @Html.ActionLink(ConstsWeb.DescricaoAcaoDetalhes, ConstsWeb.AcaoDetalhes, new { id = item.Id }) |
+                @Html.ActionLink(ConstsWeb.DescricaoAcaoDeletar, ConstsWeb.AcaoDeletar, new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

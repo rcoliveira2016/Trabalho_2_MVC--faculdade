@@ -28,8 +28,5 @@ namespace Trabalho_2_MVC.Dominio.Context
             modelBuilder.Configurations.Add(new UsuarioMap());
         }
 
-        public System.Data.Entity.DbSet<Trabalho_2_MVC.Dominio.Entidades.Servico> Servicoes { get; set; }
-
-        public System.Data.Entity.DbSet<Trabalho_2_MVC.Dominio.Entidades.Usuario> Usuarios { get; set; }
     }
 }

@@ -9,11 +9,11 @@ namespace Trabalho_2_MVC.Controllers
 {
     public class UsuariosController : CommonController
     {
-        private readonly IUsuariosRepositorio serviosRepositorio = RepositorioFactory.CriarUsuarios();
+        private readonly IUsuariosRepositorio usuariosRepositorio = RepositorioFactory.CriarUsuarios();
 
         public ActionResult Index()
         {
-            return View(serviosRepositorio.ListaTodos());
+            return View(usuariosRepositorio.ListaTodos());
         }
 
 
@@ -23,7 +23,7 @@ namespace Trabalho_2_MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var usuario = serviosRepositorio.BuscarPorId(id.Value);
+            var usuario = usuariosRepositorio.BuscarPorId(id.Value);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -44,7 +44,7 @@ namespace Trabalho_2_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                serviosRepositorio.Adiciona(usuario);
+                usuariosRepositorio.Adiciona(usuario);
                 return RedirectToAction("Index");
             }
 
@@ -58,7 +58,7 @@ namespace Trabalho_2_MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = serviosRepositorio.BuscarPorId(id.Value);
+            Usuario usuario = usuariosRepositorio.BuscarPorId(id.Value);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -72,7 +72,7 @@ namespace Trabalho_2_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                serviosRepositorio.Alterar(usuario);
+                usuariosRepositorio.Alterar(usuario);
                 return RedirectToAction("Index");
             }
             return View(usuario);
@@ -85,7 +85,7 @@ namespace Trabalho_2_MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = serviosRepositorio.BuscarPorId(id.Value);
+            Usuario usuario = usuariosRepositorio.BuscarPorId(id.Value);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace Trabalho_2_MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletarConfirmed(long id)
         {
-            serviosRepositorio.Deletar(id);
+            usuariosRepositorio.Deletar(id);
             return RedirectToAction("Index");
         }
 
@@ -106,7 +106,7 @@ namespace Trabalho_2_MVC.Controllers
             base.Dispose(disposing);
             if (disposing)
             {
-                serviosRepositorio.Dispose();
+                usuariosRepositorio.Dispose();
             }
         }
 

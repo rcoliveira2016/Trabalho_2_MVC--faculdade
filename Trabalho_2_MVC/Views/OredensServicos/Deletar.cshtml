@@ -1,0 +1,66 @@
+﻿@model Trabalho_2_MVC.Dominio.Entidades.OrdemServico
+
+@{
+    ViewBag.Title = "Deletar";
+}
+
+<h2>Deletar</h2>
+
+<h3>Deseja deletar?</h3>
+<div>
+    <h4>OrdemServico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Servico.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Servico.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.NomeCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.NomeCompleto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unitario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataAbertura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataAbertura)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink(ConstsWeb.DescricaoVoltarListagem, "Index")
+        </div>
+    }
+</div>
