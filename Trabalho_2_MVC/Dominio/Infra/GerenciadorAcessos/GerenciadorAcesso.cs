@@ -17,6 +17,7 @@ namespace Trabalho_2_MVC.Dominio.Infra.GerenciadorAcessos
 
         const string nomeUsuario = "***";
         const string chaveUsuarioLogadoSessao = "UsuarioLogado";
+        const string chaveUsuarioLogadoCookies = "__UsuarioLogado__";
         const string chaveValorLoginUsuario = "LoginUsuario";
 
         public UsuarioModel UsuarioLogado { get => ObterUsuarioLogado(); }
@@ -31,7 +32,7 @@ namespace Trabalho_2_MVC.Dominio.Infra.GerenciadorAcessos
                 return usuario;
             }
 
-            var cookie = HttpContext.Current.Response.Cookies.Get(chaveUsuarioLogadoSessao);
+            var cookie = HttpContext.Current.Response.Cookies.Get(chaveUsuarioLogadoCookies);
 
             if (cookie != null && cookie.HasKeys)
             {
@@ -49,14 +50,16 @@ namespace Trabalho_2_MVC.Dominio.Infra.GerenciadorAcessos
 
         public void LogarUsuario(Usuario usuario)
         {
-            var cookie = new HttpCookie(chaveUsuarioLogadoSessao)
+            var cookie = new HttpCookie(chaveUsuarioLogadoCookies)
             {
-                Expires = DateTime.Now.AddDays(3)
+                Expires = DateTime.Now.AddDays(3),
+                Value = usuario.Login,
+                Secure = false,
+                HttpOnly = true,
+                SameSite = SameSiteMode.Lax,
             };
 
-            cookie.Value = usuario.Login;
-
-            HttpContext.Current.Response.Cookies.Add(cookie);
+            HttpContext.Current.Response.AppendCookie(cookie);
 
             HttpContext.Current.Session.Add(chaveUsuarioLogadoSessao, new UsuarioModel
             {
