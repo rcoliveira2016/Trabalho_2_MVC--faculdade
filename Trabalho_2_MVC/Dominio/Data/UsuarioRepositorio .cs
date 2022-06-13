@@ -13,5 +13,15 @@ namespace Trabalho_2_MVC.Dominio.Data
         public UsuarioRepositorio(IDbContext dbContext) : base(dbContext)
         {
         }
+
+        public Usuario BuscarPorLogin(string login)
+        {
+            return ListaTodos().FirstOrDefault(x => x.Login == login);
+        }
+
+        public bool ExisteLogin(string login)
+        {
+            return ListaTodos().Any(x => x.Login == login);
+        }
     }
 }

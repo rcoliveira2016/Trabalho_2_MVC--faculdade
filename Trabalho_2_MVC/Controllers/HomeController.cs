@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Trabalho_2_MVC.Dominio.Entidades;
 using Trabalho_2_MVC.Dominio.Interfaces.Data;
+using Trabalho_2_MVC.Dominio.Interfaces.GerenciadorAcessos;
 using Trabalho_2_MVC.ViewModels;
 
 namespace Trabalho_2_MVC.Controllers
@@ -12,10 +13,12 @@ namespace Trabalho_2_MVC.Controllers
     public class HomeController : CommonController
     {
         private readonly IUsuariosRepositorio usuariosRepositorio;
+        private readonly IGerenciadorAcesso gerenciadorAcesso;
 
-        public HomeController(IUsuariosRepositorio usuariosRepositorio)
+        public HomeController(IUsuariosRepositorio usuariosRepositorio, IGerenciadorAcesso gerenciadorAcesso)
         {
             this.usuariosRepositorio = usuariosRepositorio;
+            this.gerenciadorAcesso = gerenciadorAcesso;
         }
         public ActionResult Index()
         {
@@ -39,10 +42,10 @@ namespace Trabalho_2_MVC.Controllers
         [AllowAnonymous]
         public ActionResult LoginUsuario(LoginViewModel input)
         {
-            var usuario = usuariosRepositorio.ListaTodos().FirstOrDefault(x => x.Login == input.Login);
+            var usuario = usuariosRepositorio.BuscarPorLogin(input.Login);
             if (usuario != null && usuario.Senha.Equals(input.Senha) && usuario.Login.Equals(input.Login))
             {
-                AplicacaoWeb.LogarUsuario(usuario);
+                gerenciadorAcesso.LogarUsuario(usuario);
                 return RedirectToAction("Index");
             }
             else
@@ -72,7 +75,7 @@ namespace Trabalho_2_MVC.Controllers
         public ActionResult LogOff()
         {
 
-            AplicacaoWeb.LogOffUsuario();
+            gerenciadorAcesso.LogOffUsuario();
             return RedirectToAction("Login");
         }
     }

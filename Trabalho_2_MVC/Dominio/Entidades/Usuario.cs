@@ -44,7 +44,7 @@ namespace Trabalho_2_MVC.Dominio.Entidades
         {
             var repositorio = InMemory.GetService<IUsuariosRepositorio>();
 
-            if (repositorio.ListaTodos().Any(x => x.Login == Login))
+            if (repositorio.ExisteLogin(Login))
                 mensagens.Add("Já existe usuário com esse login");
         }
     }

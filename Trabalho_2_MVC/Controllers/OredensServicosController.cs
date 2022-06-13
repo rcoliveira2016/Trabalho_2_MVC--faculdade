@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Trabalho_2_MVC.Dominio.Entidades;
 using Trabalho_2_MVC.Dominio.Infra.Extensoes;
 using Trabalho_2_MVC.Dominio.Interfaces.Data;
+using Trabalho_2_MVC.Dominio.Interfaces.GerenciadorAcessos;
 using Trabalho_2_MVC.ViewModels;
 
 namespace Trabalho_2_MVC.Controllers
@@ -18,17 +19,20 @@ namespace Trabalho_2_MVC.Controllers
         private readonly IClientesRepositorio clienteRepositorio;
         private readonly IServicosRepositorio serviosRepositorio;
         private readonly IUsuariosRepositorio usuariosRepositorio;
+        private readonly IGerenciadorAcesso gerenciadorAcesso;
 
         public OredensServicosController(
             IOrdensServicosRepositorio ordensServicosRepositorio,
             IClientesRepositorio clienteRepositorio,
             IServicosRepositorio serviosRepositorio,
-            IUsuariosRepositorio usuariosRepositorio)
+            IUsuariosRepositorio usuariosRepositorio,
+            IGerenciadorAcesso gerenciadorAcesso)
         {
             this.ordensServicosRepositorio = ordensServicosRepositorio;
             this.clienteRepositorio = clienteRepositorio;
             this.serviosRepositorio = serviosRepositorio;
             this.usuariosRepositorio = usuariosRepositorio;
+            this.gerenciadorAcesso = gerenciadorAcesso;
         }
 
         public ActionResult Index()
@@ -144,7 +148,7 @@ namespace Trabalho_2_MVC.Controllers
         {
             ViewBag.IdCliente = new SelectList(ObterSelectList(clienteRepositorio.ListaTodos()), "Value", "Text", idCliente);
             ViewBag.IdServico = new SelectList(ObterSelectList(serviosRepositorio.ListaTodos()), "Value", "Text", idServico);
-            ViewBag.IdUsuario = new SelectList(ObterSelectList(usuariosRepositorio.ListaTodos()), "Value", "Text", idUsuario?? AplicacaoWeb.UsuarioLogado.Id);
+            ViewBag.IdUsuario = new SelectList(ObterSelectList(usuariosRepositorio.ListaTodos()), "Value", "Text", idUsuario?? gerenciadorAcesso.UsuarioLogado.Id);
             ViewBag.TipoPagamento = new SelectList(ObterTipoFormaPagamento(), "Value", "Text", (int?)tipoFormaPagamento);
         }
 

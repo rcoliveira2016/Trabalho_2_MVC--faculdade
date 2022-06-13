@@ -133,7 +133,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AplicacaoWeb.cs" />
+    <Compile Include="_AplicacaoWeb.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -166,6 +166,8 @@
     <Compile Include="Dominio\Entidades\Usuario.cs" />
     <Compile Include="Dominio\Infra\Constantes\ConstsWeb.cs" />
     <Compile Include="Dominio\Infra\Extensoes\ExtensoesPadrao.cs" />
+    <Compile Include="Dominio\Infra\GerenciadorAcessos\GerenciadorAcesso.cs" />
+    <Compile Include="Dominio\Infra\GerenciadorAcessos\Models\UsuarioModel.cs" />
     <Compile Include="Dominio\Infra\Ioc\InMemory.cs" />
     <Compile Include="Dominio\Infra\Ioc\RegisterService.cs" />
     <Compile Include="Dominio\Interfaces\Context\IDbContext.cs" />
@@ -174,6 +176,7 @@
     <Compile Include="Dominio\Interfaces\Data\IServicosRepositorio.cs" />
     <Compile Include="Dominio\Interfaces\Data\IClientesRepositorio.cs" />
     <Compile Include="Dominio\Interfaces\Data\IRepositorioBase.cs" />
+    <Compile Include="Dominio\Interfaces\Infra\GerenciadorAcessos\IGerenciadorAcesso.cs" />
     <Compile Include="Filters\AutenticacaoWebMVC.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
