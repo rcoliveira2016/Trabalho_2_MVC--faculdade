@@ -45,6 +45,7 @@ namespace Trabalho_2_MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Cadastro(Usuario usuario)
         {
+            ValidarStateModel(usuario);
             if (ModelState.IsValid)
             {
                 usuariosRepositorio.Adiciona(usuario);

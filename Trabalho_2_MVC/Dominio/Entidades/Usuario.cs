@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Trabalho_2_MVC.Dominio.Infra.Ioc;
+using Trabalho_2_MVC.Dominio.Interfaces.Data;
 
 namespace Trabalho_2_MVC.Dominio.Entidades
 {
@@ -33,7 +35,17 @@ namespace Trabalho_2_MVC.Dominio.Entidades
 
             ValidarCampo(mensagens, Senha, "Senha");
 
+            LoginJaExiste(mensagens);
+
             return !mensagens.Any();
+        }
+
+        private void LoginJaExiste(List<string> mensagens)
+        {
+            var repositorio = InMemory.GetService<IUsuariosRepositorio>();
+
+            if (repositorio.ListaTodos().Any(x => x.Login == Login))
+                mensagens.Add("Já existe usuário com esse login");
         }
     }
 }

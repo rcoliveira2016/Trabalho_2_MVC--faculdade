@@ -133,6 +133,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AplicacaoWeb.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -173,6 +174,7 @@
     <Compile Include="Dominio\Interfaces\Data\IServicosRepositorio.cs" />
     <Compile Include="Dominio\Interfaces\Data\IClientesRepositorio.cs" />
     <Compile Include="Dominio\Interfaces\Data\IRepositorioBase.cs" />
+    <Compile Include="Filters\AutenticacaoWebMVC.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,6 +188,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\UsuarioViewModel.cs" />
     <Compile Include="ViewModels\OrdemServicoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -227,7 +231,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Clientes\Cadastro.cshtml" />
     <Content Include="Views\Clientes\Deletar.cshtml" />

@@ -1,0 +1,138 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .login-container {
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+        .login-form-1 {
+            padding: 5%;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+        }
+
+            .login-form-1 h3 {
+                text-align: left;
+                color: #333;
+            }
+
+        .login-form-2 {
+            padding: 5%;
+            background: #0062cc;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+        }
+
+            .login-form-2 h3 {
+                text-align: left;
+                color: #fff;
+            }
+
+        .login-container form {
+            padding: 10%;
+        }
+
+        .btnSubmit {
+            width: 50%;
+            border-radius: 1rem;
+            padding: 1.5%;
+            border: none;
+            cursor: pointer;
+        }
+
+        .login-form-1 .btnSubmit {
+            font-weight: 600;
+            color: #fff;
+            background-color: #0062cc;
+        }
+
+        .login-form-2 .btnSubmit {
+            font-weight: 600;
+            color: #0062cc;
+            background-color: #fff;
+        }
+
+        .login-form-2 .ForgetPwd {
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .login-form-1 .ForgetPwd {
+            color: #0062cc;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .login-form-1, .login-form-2 {
+            height: 461px;
+        }
+
+        .validation-summary-errors {
+            font-weight: 900;
+        }
+             .validation-summary-errors ul {
+                list-style-type: none;
+                padding: 0;
+            }
+    </style>
+</head>
+<body>
+    <div class="container login-container">
+        <div class="row" style="margin-top: 20px">
+            
+            <div class="col-md-6 login-form-1">
+                <h3>Login</h3>
+                @using (Html.BeginForm("LoginUsuario", "Home"))
+                {
+                    if (!string.IsNullOrEmpty(ViewBag.Erros))
+                    {
+                        <div style="margin-bottom:20px" class="alert alert-danger">
+                            <b>Erro @ViewBag.Erros </b>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <input type="text" name="Login" class="form-control" placeholder="Login" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="Senha" class="form-control" placeholder="Senha" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btnSubmit" value="Login" />
+                    </div>
+                }
+            </div>
+            <div class="col-md-6 login-form-2">
+                <h3>Cadastro</h3>
+                @using (Html.BeginForm("CadastrarUsuario", "Home"))
+                {
+                    @Html.ValidationSummary(true, "", new {@class= "alert alert-danger text-danger" })
+                    <div class="form-group">
+                        <input type="text" name="NomeCompleto" class="form-control" placeholder="Nome completo" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="Login" class="form-control" placeholder="Login" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="Senha" class="form-control" placeholder="Senha" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btnSubmit" value="Cadastrar" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

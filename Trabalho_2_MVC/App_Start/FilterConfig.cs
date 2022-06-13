@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using Trabalho_2_MVC.Filters;
 
 namespace Trabalho_2_MVC
 {
@@ -8,6 +9,7 @@ namespace Trabalho_2_MVC
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new AutenticacaoWebMVC());
         }
     }
 }

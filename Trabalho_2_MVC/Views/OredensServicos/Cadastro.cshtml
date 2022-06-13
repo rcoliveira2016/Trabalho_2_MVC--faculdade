@@ -26,14 +26,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IdUsuario", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IdUsuario", null, htmlAttributes: new { @class = "form-control", @readonly = !Model.RegistroNovo })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.IdServico, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IdServico", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IdServico", null, htmlAttributes: new { @class = "form-control", @readonly = !Model.RegistroNovo })
             </div>
         </div>
 
@@ -50,7 +50,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.TipoPagamento, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("TipoPagamento", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("TipoPagamento", null, htmlAttributes: new { @class = "form-control", @readonly = !Model.RegistroNovo})
                 </div>
             </div>
             <div id="DivTipoCartao">
@@ -87,7 +87,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Salvar" class="btn btn-default" />
             </div>
         </div>
     </div>

@@ -94,7 +94,7 @@ namespace Trabalho_2_MVC.Controllers
         public ActionResult Editar(OrdemServicoViewModel ordemServicoViewModel)
         {
             var ordemServico = MontarEntidadeOrdemServico(ordemServicoViewModel);
-            ordemServico.SetarValorParaEditar(ordensServicosRepositorio);
+            ordemServico.SetarValorParaEditar(ordensServicosRepositorio);       
             ValidarStateModel(ordemServico);
             if (ModelState.IsValid)
             {
@@ -144,7 +144,7 @@ namespace Trabalho_2_MVC.Controllers
         {
             ViewBag.IdCliente = new SelectList(ObterSelectList(clienteRepositorio.ListaTodos()), "Value", "Text", idCliente);
             ViewBag.IdServico = new SelectList(ObterSelectList(serviosRepositorio.ListaTodos()), "Value", "Text", idServico);
-            ViewBag.IdUsuario = new SelectList(ObterSelectList(usuariosRepositorio.ListaTodos()), "Value", "Text", idUsuario);
+            ViewBag.IdUsuario = new SelectList(ObterSelectList(usuariosRepositorio.ListaTodos()), "Value", "Text", idUsuario?? AplicacaoWeb.UsuarioLogado.Id);
             ViewBag.TipoPagamento = new SelectList(ObterTipoFormaPagamento(), "Value", "Text", (int?)tipoFormaPagamento);
         }
 

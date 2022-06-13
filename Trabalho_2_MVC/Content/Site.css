@@ -39,3 +39,9 @@ footer{
     background-color: #fff;
     opacity: 1;
 }
+
+select[readonly=true], select[readonly=True] {
+    background: #eee; /*Simular campo inativo - Sugestão @GabrielRodrigues*/
+    pointer-events: none;
+    touch-action: none;
+}
