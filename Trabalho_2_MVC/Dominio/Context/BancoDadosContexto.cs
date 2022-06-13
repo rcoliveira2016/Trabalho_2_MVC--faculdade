@@ -5,10 +5,11 @@ using System.Linq;
 using System.Web;
 using Trabalho_2_MVC.Dominio.Context.Map;
 using Trabalho_2_MVC.Dominio.Entidades;
+using Trabalho_2_MVC.Dominio.Interfaces.Context;
 
 namespace Trabalho_2_MVC.Dominio.Context
 {
-    public class BancoDadosContexto : DbContext
+    public class BancoDadosContexto : DbContext, IDbContext
     {
 
         public BancoDadosContexto() : base("BancoDadosContexto")

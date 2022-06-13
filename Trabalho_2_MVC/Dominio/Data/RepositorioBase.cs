@@ -3,18 +3,19 @@ using System.Data.Entity;
 using System.Linq;
 using Trabalho_2_MVC.Dominio.Context;
 using Trabalho_2_MVC.Dominio.Entidades;
+using Trabalho_2_MVC.Dominio.Interfaces.Context;
 using Trabalho_2_MVC.Dominio.Interfaces.Data;
 
 namespace Trabalho_2_MVC.Dominio.Data
 {
     public class RepositorioBase<T> : IRepositorioBase<T> where T : Entidade
     {
-        private BancoDadosContexto dbContext;
+        private IDbContext dbContext;
         protected DbSet<T> DbSet => dbContext.Set<T>();
 
-        public RepositorioBase()
+        public RepositorioBase(IDbContext dbContext)
         {
-            dbContext = new BancoDadosContexto();
+            this.dbContext = dbContext;
         }
 
         public T BuscarPorId(long id)
@@ -79,7 +80,7 @@ namespace Trabalho_2_MVC.Dominio.Data
 
         public void Dispose()
         {
-            dbContext?.Dispose();
+            //dbContext?.Dispose();
         }
     }
 }

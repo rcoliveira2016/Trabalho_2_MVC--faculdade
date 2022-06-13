@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Trabalho_2_MVC.Dominio.Infra;
-using Trabalho_2_MVC.Dominio.Infra.Factory;
+using Trabalho_2_MVC.Dominio.Infra.Ioc;
+using Trabalho_2_MVC.Dominio.Interfaces.Data;
 
 namespace Trabalho_2_MVC.Dominio.Entidades
 {
     public class OrdemServico : Entidade
     {
         public static OrdemServico Criar() => new OrdemServico() { Pagamento = Pagamento.Criar() };
-        
+
         public long IdCliente { get; set; }
         public virtual Cliente Cliente { get; set; }
         public long IdUsuario { get; set; }
@@ -29,16 +28,15 @@ namespace Trabalho_2_MVC.Dominio.Entidades
 
         public void SetarValorParaSalvar()
         {
-            if(RegistroNovo)
+            if (RegistroNovo)
                 DataAbertura = DateTime.Now;
 
 
             Pagamento.ValorTotal = CalcularValorTotal();
         }
 
-        public void SetarValorParaEditar()
+        public void SetarValorParaEditar(IOrdensServicosRepositorio ordensServicosRepositorio)
         {
-            var ordensServicosRepositorio = RepositorioFactory.CriarOrdensServicos();
             var ordemServicoExistente = ordensServicosRepositorio.BuscarPorId(Id);
 
             DataAbertura = ordemServicoExistente.DataAbertura;
@@ -48,7 +46,7 @@ namespace Trabalho_2_MVC.Dominio.Entidades
 
         public double CalcularValorTotal()
         {
-            if(IdServico==0)
+            if (IdServico == 0)
                 return 0;
 
             if (Servico == null)
@@ -58,10 +56,10 @@ namespace Trabalho_2_MVC.Dominio.Entidades
 
             return Servico.ValorUnitario * Unitario;
         }
-        
+
         public double ObterValorUnitarioServico()
         {
-            var servivoRepository = RepositorioFactory.CriarServicos();
+            var servivoRepository = InMemory.GetService<IServicosRepositorio>();
             var valorUnitario = servivoRepository.BuscarPorId(IdServico).ValorUnitario;
             servivoRepository.Dispose();
             return valorUnitario;

@@ -6,7 +6,6 @@ using System.Net;
 using System.Web.Mvc;
 using Trabalho_2_MVC.Dominio.Entidades;
 using Trabalho_2_MVC.Dominio.Infra.Extensoes;
-using Trabalho_2_MVC.Dominio.Infra.Factory;
 using Trabalho_2_MVC.Dominio.Interfaces.Data;
 using Trabalho_2_MVC.ViewModels;
 
@@ -15,11 +14,22 @@ namespace Trabalho_2_MVC.Controllers
 
     public class OredensServicosController : CommonController
     {
-        private readonly IOrdensServicosRepositorio ordensServicosRepositorio = RepositorioFactory.CriarOrdensServicos();
-        private readonly IClientesRepositorio clienteRepositorio = RepositorioFactory.CriarClientes();
-        private readonly IServicosRepositorio serviosRepositorio = RepositorioFactory.CriarServicos();
-        private readonly IUsuariosRepositorio usuariosRepositorio = RepositorioFactory.CriarUsuarios();
+        private readonly IOrdensServicosRepositorio ordensServicosRepositorio;
+        private readonly IClientesRepositorio clienteRepositorio;
+        private readonly IServicosRepositorio serviosRepositorio;
+        private readonly IUsuariosRepositorio usuariosRepositorio;
 
+        public OredensServicosController(
+            IOrdensServicosRepositorio ordensServicosRepositorio,
+            IClientesRepositorio clienteRepositorio,
+            IServicosRepositorio serviosRepositorio,
+            IUsuariosRepositorio usuariosRepositorio)
+        {
+            this.ordensServicosRepositorio = ordensServicosRepositorio;
+            this.clienteRepositorio = clienteRepositorio;
+            this.serviosRepositorio = serviosRepositorio;
+            this.usuariosRepositorio = usuariosRepositorio;
+        }
 
         public ActionResult Index()
         {
@@ -84,7 +94,7 @@ namespace Trabalho_2_MVC.Controllers
         public ActionResult Editar(OrdemServicoViewModel ordemServicoViewModel)
         {
             var ordemServico = MontarEntidadeOrdemServico(ordemServicoViewModel);
-            ordemServico.SetarValorParaEditar();
+            ordemServico.SetarValorParaEditar(ordensServicosRepositorio);
             ValidarStateModel(ordemServico);
             if (ModelState.IsValid)
             {

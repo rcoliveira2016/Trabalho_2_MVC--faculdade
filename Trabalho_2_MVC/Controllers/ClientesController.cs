@@ -2,7 +2,6 @@
 using System.Net;
 using System.Web.Mvc;
 using Trabalho_2_MVC.Dominio.Entidades;
-using Trabalho_2_MVC.Dominio.Infra.Factory;
 using Trabalho_2_MVC.Dominio.Interfaces.Data;
 
 namespace Trabalho_2_MVC.Controllers
@@ -37,7 +36,7 @@ namespace Trabalho_2_MVC.Controllers
 
         public ActionResult Cadastro()
         {
-            return View("Cadastro", new Cliente() { DataNascimento = DateTime.Now});
+            return View("Cadastro", new Cliente() { DataNascimento = DateTime.Now });
         }
 
 
@@ -99,7 +98,7 @@ namespace Trabalho_2_MVC.Controllers
         [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
         public ActionResult DeletarConfirmed(long id)
-        {            
+        {
             clienteRepositorio.Deletar(id);
             return RedirectToAction("Index");
         }

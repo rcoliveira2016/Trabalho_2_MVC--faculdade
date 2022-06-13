@@ -1,8 +1,6 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Web.Mvc;
 using Trabalho_2_MVC.Dominio.Entidades;
-using Trabalho_2_MVC.Dominio.Infra.Factory;
 using Trabalho_2_MVC.Dominio.Interfaces.Data;
 
 namespace Trabalho_2_MVC.Controllers
