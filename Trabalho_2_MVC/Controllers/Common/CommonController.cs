@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -42,12 +43,34 @@ namespace Trabalho_2_MVC.Controllers
                 View(nomeView, entidade);
         }
 
+        public ActionResult DeletarAposConfirmar<T>(IRepositorioBase<T> enidadeRepositorio, long id) where T : Entidade
+        {
+            var entidadeParaExcluir =  enidadeRepositorio.BuscarPorId(id);
+            if (!ValidarExclusao(entidadeParaExcluir))
+            {
+                //return RedirectToAction(ConstsWeb.DescricaoAcaoDeletar, new { id = id });
+                return View(ConstsWeb.DescricaoAcaoDeletar, entidadeParaExcluir);
+            }
+            enidadeRepositorio.Deletar(id);
+            return RedirectToAction("Index");
+        }
+
         protected void ValidarStateModel<T>(T entidade) where T : Entidade
         {
             if (!entidade.ValidarDados(out var erros))
             {
                 erros.ForEach(e => ModelState.AddModelError(string.Empty, e));
             }
+        }
+
+        protected bool ValidarExclusao<T>(T entidade) where T : Entidade
+        {
+            if (!entidade.ValidarExclusao(out var erro))
+            {
+                ModelState.AddModelError(string.Empty, erro??"Item não pode ser excluído");
+                return false;
+            }
+            return true;
         }
     }
 }

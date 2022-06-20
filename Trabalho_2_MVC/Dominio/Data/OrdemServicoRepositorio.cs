@@ -26,5 +26,20 @@ namespace Trabalho_2_MVC.Dominio.Data
             DbSet.Remove(item);
             SaveChanges();
         }
+
+        public bool PossuiCliente(long id)
+        {
+            return ListaTodos().Any(x => x.IdCliente == id);
+        }
+
+        public bool PossuiServico(long id)
+        {
+            return ListaTodos().Any(x => x.IdServico == id);
+        }
+
+        public bool PossuiUsuario(long id)
+        {
+            return ListaTodos().Any(x => x.IdUsuario == id);
+        }
     }
 }

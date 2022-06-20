@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using Trabalho_2_MVC.Dominio.Infra.Ioc;
 using Trabalho_2_MVC.Dominio.Interfaces.Data;
+using Trabalho_2_MVC.Dominio.Interfaces.GerenciadorAcessos;
 
 namespace Trabalho_2_MVC.Dominio.Entidades
 {
@@ -46,6 +47,27 @@ namespace Trabalho_2_MVC.Dominio.Entidades
 
             if (repositorio.ExisteLogin(Login))
                 mensagens.Add("Já existe usuário com esse login");
+        }
+
+        public override bool ValidarExclusao(out string mensagemErro)
+        {
+            var servivoRepository = InMemory.GetService<IOrdensServicosRepositorio>();
+
+            if (servivoRepository.PossuiUsuario(Id))
+            {
+                mensagemErro = "Existe Ordens de serviço com esse Usuario";
+                return false;
+            }
+            var gerenciadorAcesso = InMemory.GetService<IGerenciadorAcesso>();
+
+            if (gerenciadorAcesso.UsuarioLogado.Id == Id)
+            {
+                mensagemErro = "Não é possivel excluir um usuario logado";
+                return false;
+            }
+
+            mensagemErro = null;
+            return true;
         }
     }
 }

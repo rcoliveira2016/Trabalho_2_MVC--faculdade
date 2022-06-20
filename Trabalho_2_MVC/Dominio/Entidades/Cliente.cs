@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Trabalho_2_MVC.Dominio.Infra.Ioc;
+using Trabalho_2_MVC.Dominio.Interfaces.Data;
 
 namespace Trabalho_2_MVC.Dominio.Entidades
 {
@@ -46,6 +48,20 @@ namespace Trabalho_2_MVC.Dominio.Entidades
             ValidarCampo(mensagens, DataNascimento, "Data de nascimaneto");
 
             return !mensagens.Any();
+        }
+
+        public override bool ValidarExclusao(out string mensagemErro)
+        {
+            var servivoRepository = InMemory.GetService<IOrdensServicosRepositorio>();
+
+            if (servivoRepository.PossuiCliente(Id))
+            {
+                mensagemErro = "Existe Ordens de serviço com esse cliente";
+                return false;
+            }
+
+            mensagemErro = null;
+            return true;
         }
     }
 }

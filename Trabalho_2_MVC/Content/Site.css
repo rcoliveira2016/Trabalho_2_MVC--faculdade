@@ -48,3 +48,13 @@ select[readonly=true], select[readonly=True] {
 dd, dt{
     font-size:1.7rem
 }
+
+
+.erro-deletar {
+    color: #e34545;
+    font-weight: 800;
+}
+
+.erro-deletar ul {
+    padding-left:20px
+}

@@ -110,8 +110,7 @@ namespace Trabalho_2_MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            ordensServicosRepositorio.Deletar(id);
-            return RedirectToAction("Index");
+            return DeletarAposConfirmar(ordensServicosRepositorio, id);
         }
 
         protected override void Dispose(bool disposing)

@@ -1,8 +1,10 @@
 ﻿@model Trabalho_2_MVC.Dominio.Entidades.Entidade
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "erro-deletar text-danger" })
 
     <div class="form-actions no-color">
         <input type="submit" value="Deletar" class="btn btn-default" /> |

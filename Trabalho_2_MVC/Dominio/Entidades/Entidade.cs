@@ -13,6 +13,11 @@ namespace Trabalho_2_MVC.Dominio.Entidades
 
 
         #region Validacoes
+        public virtual bool ValidarExclusao(out string mensagemErro)
+        {
+            mensagemErro = null;
+            return true;
+        }
         public virtual bool ValidarDados(out List<string> mensagens)
         {
             mensagens = new List<string>();
