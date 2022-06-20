@@ -48,9 +48,7 @@
         @item.ValorTotal
     </td>
     <td>
-        @Html.ActionLink(ConstsWeb.DescricaoAcaoEditar, ConstsWeb.AcaoEditar, new { id = item.Id }) |
-        @Html.ActionLink(ConstsWeb.DescricaoAcaoDetalhes, ConstsWeb.AcaoDetalhes, new { id = item.Id }) |
-        @Html.ActionLink(ConstsWeb.DescricaoAcaoDeletar, ConstsWeb.AcaoDeletar, new { id = item.Id })
+        @Html.Partial("~/Views/Shared/Partial/_AcoesGrid.cshtml", item)
     </td>
 </tr>
     }

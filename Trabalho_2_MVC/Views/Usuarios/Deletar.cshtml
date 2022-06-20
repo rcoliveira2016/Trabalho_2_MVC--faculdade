@@ -30,13 +30,5 @@
 
     </dl>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Deletar" class="btn btn-default" /> |
-            @Html.ActionLink(ConstsWeb.DescricaoVoltarListagem, "Index")
-        </div>
-    }
+    @Html.Partial("~/Views/Shared/Partial/_AcaoDeletar.cshtml", Model)
 </div>

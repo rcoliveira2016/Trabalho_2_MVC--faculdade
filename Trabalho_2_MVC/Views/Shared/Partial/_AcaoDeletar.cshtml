@@ -1,0 +1,11 @@
+﻿@model Trabalho_2_MVC.Dominio.Entidades.Entidade
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Deletar" class="btn btn-default" /> |
+        @Html.ActionLink(ConstsWeb.DescricaoVoltarListagem, "Index")
+    </div>
+}

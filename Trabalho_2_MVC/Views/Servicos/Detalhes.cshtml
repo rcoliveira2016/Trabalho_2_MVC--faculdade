@@ -36,7 +36,4 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink(ConstsWeb.DescricaoAcaoEditar, ConstsWeb.AcaoEditar, new { id = Model.Id }) |
-    @Html.ActionLink(ConstsWeb.DescricaoVoltarListagem, "Index")
-</p>
+@Html.Partial("~/Views/Shared/Partial/_AcoesDetalhes.cshtml", Model)

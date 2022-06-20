@@ -22,16 +22,7 @@ namespace Trabalho_2_MVC.Controllers
 
         public ActionResult Detalhes(long? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var usuario = usuariosRepositorio.BuscarPorId(id.Value);
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-            return View(usuario);
+            return RetornarDetalhes(usuariosRepositorio, id);
         }
 
 
@@ -58,16 +49,7 @@ namespace Trabalho_2_MVC.Controllers
 
         public ActionResult Editar(long? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Usuario usuario = usuariosRepositorio.BuscarPorId(id.Value);
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-            return View("Cadastro", usuario);
+            return RetornarEditar(usuariosRepositorio, id);
         }
 
         [HttpPost]
@@ -85,16 +67,7 @@ namespace Trabalho_2_MVC.Controllers
 
         public ActionResult Deletar(long? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Usuario usuario = usuariosRepositorio.BuscarPorId(id.Value);
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-            return View(usuario);
+            return RetornarDeletar(usuariosRepositorio, id);
         }
 
         [HttpPost, ActionName("Deletar")]

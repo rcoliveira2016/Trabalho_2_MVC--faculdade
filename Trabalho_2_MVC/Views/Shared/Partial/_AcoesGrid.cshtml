@@ -1,0 +1,5 @@
+﻿@model Trabalho_2_MVC.Dominio.Entidades.Entidade
+
+@Html.ActionLink(ConstsWeb.DescricaoAcaoEditar, ConstsWeb.AcaoEditar, new { id = Model.Id }) |
+@Html.ActionLink(ConstsWeb.DescricaoAcaoDetalhes, ConstsWeb.AcaoDetalhes, new { id = Model.Id }) |
+@Html.ActionLink(ConstsWeb.DescricaoAcaoDeletar, ConstsWeb.AcaoDeletar, new { id = Model.Id })

@@ -43,16 +43,7 @@ namespace Trabalho_2_MVC.Controllers
 
         public ActionResult Detalhes(long? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            OrdemServico ordemServico = ordensServicosRepositorio.BuscarPorId(id.Value);
-            if (ordemServico == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ordemServico);
+            return RetornarDetalhes(ordensServicosRepositorio, id);
         }
 
         public ActionResult Cadastro()
@@ -112,16 +103,7 @@ namespace Trabalho_2_MVC.Controllers
 
         public ActionResult Deletar(long? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            OrdemServico ordemServico = ordensServicosRepositorio.BuscarPorId(id.Value);
-            if (ordemServico == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ordemServico);
+            return RetornarDeletar(ordensServicosRepositorio, id);
         }
 
         [HttpPost, ActionName("Deletar")]

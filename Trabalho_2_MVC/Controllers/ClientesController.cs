@@ -21,16 +21,7 @@ namespace Trabalho_2_MVC.Controllers
 
         public ActionResult Detalhes(long? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cliente cliente = clienteRepositorio.BuscarPorId(id.Value);
-            if (cliente == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cliente);
+            return RetornarDetalhes(clienteRepositorio, id);
         }
 
 
@@ -42,7 +33,7 @@ namespace Trabalho_2_MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Cadastro([Bind(Include = "Id,Nome,CPF,DataNascimento,Endereco,Telefone")] Cliente cliente)
+        public ActionResult Cadastro( Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -56,16 +47,7 @@ namespace Trabalho_2_MVC.Controllers
 
         public ActionResult Editar(long? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cliente cliente = clienteRepositorio.BuscarPorId(id.Value);
-            if (cliente == null)
-            {
-                return HttpNotFound();
-            }
-            return View("Cadastro", cliente);
+            return RetornarEditar(clienteRepositorio, id);
         }
 
         [HttpPost]
@@ -83,16 +65,7 @@ namespace Trabalho_2_MVC.Controllers
 
         public ActionResult Deletar(long? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cliente cliente = clienteRepositorio.BuscarPorId(id.Value);
-            if (cliente == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cliente);
+            return RetornarDeletar(clienteRepositorio, id);
         }
 
         [HttpPost, ActionName("Deletar")]

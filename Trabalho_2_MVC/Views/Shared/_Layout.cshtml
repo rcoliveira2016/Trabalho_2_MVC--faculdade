@@ -1,7 +1,5 @@
 ﻿@{ 
-    IEnumerable<string> erros = ViewBag.MensagensErros ?? new string[0];
-    IEnumerable<string> sucessos = ViewBag.MensagensSucessos ?? new string[0];
-
+   
     var tituloNomeApp = "Order-Servi";
     var tituloPagina = string.IsNullOrEmpty(ViewBag.Title) ? tituloNomeApp : $"{ViewBag.Title} - {tituloNomeApp}";
 }
@@ -50,25 +48,6 @@
         </div>
     </div>
     <div class="container body-content">
-        @if (erros.Any() || sucessos.Any())
-        {
-            <div style="margin-bottom:10px">
-                @if (sucessos.Any())
-                {
-                    <div class="alert alert-success" role="alert" runat="server" id="divAlertaSucesso" visible="false">
-                        @sucessos.Aggregate((a, b) => $"{a}, {b}")
-                    </div>
-                }
-                @if (erros.Any())
-                {
-                    <div class="alert alert-danger" role="alert" runat="server" id="divAlertaDanger" visible="false">
-                        @erros.Aggregate((a, b) => $"{a}, {b}")
-                    </div>
-                }
-
-            </div>
-        }
-
         @RenderBody()
     <footer>
         <p>&copy; @DateTime.Now.Year - Order-Servi</p>

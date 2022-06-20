@@ -1,49 +1,45 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using Trabalho_2_MVC.Dominio.Entidades;
+using Trabalho_2_MVC.Dominio.Interfaces.Data;
 
 namespace Trabalho_2_MVC.Controllers
 {
     public abstract class CommonController : Controller
     {
-        private List<string> MensagensErros { 
-            get
+
+
+        protected ActionResult RetornarDetalhes<T>(IRepositorioBase<T> enidadeRepositorio, long? id) where T: Entidade
+        {
+            return RetornarEntidadeViewModel(enidadeRepositorio, id);
+        }
+
+        protected ActionResult RetornarEditar<T>(IRepositorioBase<T> enidadeRepositorio, long? id) where T : Entidade
+        {
+            return RetornarEntidadeViewModel(enidadeRepositorio, id, "Cadastro");
+        }
+
+        protected ActionResult RetornarDeletar<T>(IRepositorioBase<T> enidadeRepositorio, long? id) where T : Entidade
+        {
+            return RetornarEntidadeViewModel(enidadeRepositorio, id);
+        }
+
+        protected ActionResult RetornarEntidadeViewModel<T>(IRepositorioBase<T> enidadeRepositorio, long? id, string nomeView = null) where T : Entidade
+        {
+            if (id == null)
             {
-                if (ViewBag.MensagensErros == null)
-                    ViewBag.MensagensErros = new List<string>();
-
-                return ViewBag.MensagensErros;
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            set { ViewBag.MensagensErros = value; }
-        }
-
-        protected List<string> MensagensSucessos
-        {
-            get {
-                if (ViewBag.MensagensSucessos == null)
-                    ViewBag.MensagensSucessos = new List<string>();
-
-                return ViewBag.MensagensSucessos; 
+            var entidade = enidadeRepositorio.BuscarPorId(id.Value);
+            if (entidade == null)
+            {
+                return HttpNotFound();
             }
-            set { ViewBag.MensagensSucessos = value; }
-        }
-
-        protected void AdicionarErro(string texto)
-        {
-            MensagensErros.Add(texto);
-        }
-
-        protected void AdicionarSucesso(string texto)
-        {
-            MensagensSucessos.Add(texto);
-        }
-
-        protected string MensagensErrosStateModel()
-        {
-            return string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
+            return nomeView==null? 
+                View(entidade): 
+                View(nomeView, entidade);
         }
 
         protected void ValidarStateModel<T>(T entidade) where T : Entidade
