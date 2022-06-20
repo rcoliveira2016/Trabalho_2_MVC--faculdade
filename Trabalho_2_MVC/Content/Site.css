@@ -45,3 +45,6 @@ select[readonly=true], select[readonly=True] {
     pointer-events: none;
     touch-action: none;
 }
+dd, dt{
+    font-size:1.7rem
+}
