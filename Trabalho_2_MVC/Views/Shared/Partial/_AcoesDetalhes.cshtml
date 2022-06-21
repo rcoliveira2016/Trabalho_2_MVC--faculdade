@@ -3,5 +3,5 @@
 <p>
     <hr />
     @Html.ActionLink(ConstsWeb.DescricaoAcaoEditar, ConstsWeb.AcaoEditar, new { id = Model.Id }) |
-    @Html.ActionLink(ConstsWeb.DescricaoVoltarListagem, "Index")
+    @Html.Partial("~/Views/Shared/Partial/_AcaoVoltarListagem.cshtml", Model)
 </p>
