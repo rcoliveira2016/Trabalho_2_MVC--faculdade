@@ -5,7 +5,7 @@ using Trabalho_2_MVC.Dominio.Interfaces.Data;
 
 namespace Trabalho_2_MVC.Controllers
 {
-    public class ServicosController : CommonController
+    public class ServicosController : BaseController
     {
         private readonly IServicosRepositorio serviosRepositorio;
         public ServicosController(IServicosRepositorio serviosRepositorio)

@@ -137,7 +137,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
-    <Compile Include="Controllers\Common\CommonController.cs" />
+    <Compile Include="Controllers\Common\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OredensServicosController.cs" />
     <Compile Include="Controllers\ServicosController.cs" />
@@ -231,7 +231,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Clientes\Cadastro.cshtml" />
@@ -255,6 +254,7 @@
     <Content Include="Views\Shared\Partial\_AcaoDeletar.cshtml" />
     <Content Include="Views\Shared\Partial\_AcaoVoltarListagem.cshtml" />
     <Content Include="Views\Shared\Partial\_ToolbarGrid.cshtml" />
+    <Content Include="Views\Shared\Partial\_AcaoCadastro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dominio\Infra\Factory\" />

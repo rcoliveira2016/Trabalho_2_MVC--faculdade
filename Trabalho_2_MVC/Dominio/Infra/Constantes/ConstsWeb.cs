@@ -19,6 +19,6 @@ namespace System
         public const string AcaoDetalhes = "Detalhes";
         public const string DescricaoAcaoDetalhes = "Detalhes";
 
-        public const string DescricaoVoltarListagem = "Voltar para Listagem";
+        public const string DescricaoVoltarListagem = "Voltar";
     }
 }

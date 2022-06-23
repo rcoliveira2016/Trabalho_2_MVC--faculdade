@@ -13,7 +13,7 @@ using Trabalho_2_MVC.ViewModels;
 namespace Trabalho_2_MVC.Controllers
 {
 
-    public class OredensServicosController : CommonController
+    public class OredensServicosController : BaseController
     {
         private readonly IOrdensServicosRepositorio ordensServicosRepositorio;
         private readonly IClientesRepositorio clienteRepositorio;

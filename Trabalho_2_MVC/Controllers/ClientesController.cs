@@ -6,7 +6,7 @@ using Trabalho_2_MVC.Dominio.Interfaces.Data;
 
 namespace Trabalho_2_MVC.Controllers
 {
-    public class ClientesController : CommonController
+    public class ClientesController : BaseController
     {
         private readonly IClientesRepositorio clienteRepositorio;
         public ClientesController(IClientesRepositorio clienteRepositorio)

@@ -1,5 +1,15 @@
 ﻿@model Trabalho_2_MVC.Dominio.Entidades.Entidade
 
-@Html.ActionLink(ConstsWeb.DescricaoAcaoEditar, ConstsWeb.AcaoEditar, new { id = Model.Id }) |
+<a href="@Url.Action(ConstsWeb.AcaoEditar, new { id = Model.Id })" class="btn btn-primary">
+    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+</a>
+<a href="@Url.Action(ConstsWeb.AcaoDetalhes, new { id = Model.Id })" class="btn btn-info">
+    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+</a>
+<a href="@Url.Action(ConstsWeb.AcaoDeletar, new { id = Model.Id })" class="btn btn-danger">
+    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+</a>
+
+@*@Html.ActionLink(ConstsWeb.DescricaoAcaoEditar, ConstsWeb.AcaoEditar, new { id = Model.Id }) |
 @Html.ActionLink(ConstsWeb.DescricaoAcaoDetalhes, ConstsWeb.AcaoDetalhes, new { id = Model.Id }) |
-@Html.ActionLink(ConstsWeb.DescricaoAcaoDeletar, ConstsWeb.AcaoDeletar, new { id = Model.Id })
+@Html.ActionLink(ConstsWeb.DescricaoAcaoDeletar, ConstsWeb.AcaoDeletar, new { id = Model.Id })*@

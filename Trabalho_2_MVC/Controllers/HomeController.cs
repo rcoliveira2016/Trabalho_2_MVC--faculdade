@@ -10,7 +10,7 @@ using Trabalho_2_MVC.ViewModels;
 
 namespace Trabalho_2_MVC.Controllers
 {
-    public class HomeController : CommonController
+    public class HomeController : BaseController
     {
         private readonly IUsuariosRepositorio usuariosRepositorio;
         private readonly IGerenciadorAcesso gerenciadorAcesso;
@@ -22,13 +22,6 @@ namespace Trabalho_2_MVC.Controllers
         }
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 

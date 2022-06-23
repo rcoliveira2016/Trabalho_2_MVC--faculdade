@@ -8,9 +8,10 @@ using Trabalho_2_MVC.Dominio.Interfaces.Data;
 
 namespace Trabalho_2_MVC.Controllers
 {
-    public abstract class CommonController : Controller
+    public abstract class BaseController : Controller
     {
 
+        private static readonly string KEY_SUMMARY_ERROR = string.Empty;
 
         protected ActionResult RetornarDetalhes<T>(IRepositorioBase<T> enidadeRepositorio, long? id) where T: Entidade
         {
@@ -30,14 +31,13 @@ namespace Trabalho_2_MVC.Controllers
         protected ActionResult RetornarEntidadeViewModel<T>(IRepositorioBase<T> enidadeRepositorio, long? id, string nomeView = null) where T : Entidade
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+
             var entidade = enidadeRepositorio.BuscarPorId(id.Value);
+
             if (entidade == null)
-            {
                 return HttpNotFound();
-            }
+
             return nomeView==null? 
                 View(entidade): 
                 View(nomeView, entidade);
@@ -46,11 +46,9 @@ namespace Trabalho_2_MVC.Controllers
         public ActionResult DeletarAposConfirmar<T>(IRepositorioBase<T> enidadeRepositorio, long id) where T : Entidade
         {
             var entidadeParaExcluir =  enidadeRepositorio.BuscarPorId(id);
-            if (!ValidarExclusao(entidadeParaExcluir))
-            {
-                //return RedirectToAction(ConstsWeb.DescricaoAcaoDeletar, new { id = id });
+            if (!ValidarExclusao(entidadeParaExcluir))           
                 return View(ConstsWeb.DescricaoAcaoDeletar, entidadeParaExcluir);
-            }
+
             enidadeRepositorio.Deletar(id);
             return RedirectToAction("Index");
         }
@@ -59,7 +57,7 @@ namespace Trabalho_2_MVC.Controllers
         {
             if (!entidade.ValidarDados(out var erros))
             {
-                erros.ForEach(e => ModelState.AddModelError(string.Empty, e));
+                erros.ForEach(e => ModelState.AddModelError(KEY_SUMMARY_ERROR, e));
             }
         }
 
@@ -67,7 +65,7 @@ namespace Trabalho_2_MVC.Controllers
         {
             if (!entidade.ValidarExclusao(out var erro))
             {
-                ModelState.AddModelError(string.Empty, erro??"Item não pode ser excluído");
+                ModelState.AddModelError(KEY_SUMMARY_ERROR, erro??"Item não pode ser excluído");
                 return false;
             }
             return true;

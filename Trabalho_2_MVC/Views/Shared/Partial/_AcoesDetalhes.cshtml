@@ -2,6 +2,9 @@
 
 <p>
     <hr />
-    @Html.ActionLink(ConstsWeb.DescricaoAcaoEditar, ConstsWeb.AcaoEditar, new { id = Model.Id }) |
+    <a href="@Url.Action(ConstsWeb.AcaoEditar, new { id = Model.Id })" class="btn btn-primary">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        @ConstsWeb.DescricaoAcaoEditar
+    </a>
     @Html.Partial("~/Views/Shared/Partial/_AcaoVoltarListagem.cshtml", Model)
 </p>
