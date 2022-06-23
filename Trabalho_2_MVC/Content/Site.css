@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background: #f9f9f9;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -33,6 +34,10 @@ body{
 footer{
    position: absolute;
    bottom:0   
+}
+
+.table-curved {
+    border-collapse: separate;
 }
 
 .form-control[readonly=False], .form-control[readonly=false] {
@@ -81,8 +86,23 @@ dd, dt{
     }
 
 div.card {
-    box-shadow: 1px 2px 3px 0px rgb(0 0 0 / 20%), 1px 0px 1px 0px rgb(0 0 0 / 10%);
+    box-shadow: 1px 2px 3px 0px rgb(0 0 0 / 10%), 0px -0.5px 2px 0px rgb(0 0 0 / 10%);
     border-radius: 10px;
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
+    background: #fff;
+}
+.toolbar-grid {
+    border: 1px solid #ddd;
+    border-bottom: none;
+    margin-left: 0 !important;
+}
+
+    .toolbar-grid .btn-group {
+        margin-left: 0 !important;
+        padding: 2px 3px;
+    }
+
+.table.table-bordered{
+    border-radius:5px;
 }

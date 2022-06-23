@@ -254,6 +254,7 @@
     <Content Include="Views\Shared\Partial\_AcoesDetalhes.cshtml" />
     <Content Include="Views\Shared\Partial\_AcaoDeletar.cshtml" />
     <Content Include="Views\Shared\Partial\_AcaoVoltarListagem.cshtml" />
+    <Content Include="Views\Shared\Partial\_ToolbarGrid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dominio\Infra\Factory\" />

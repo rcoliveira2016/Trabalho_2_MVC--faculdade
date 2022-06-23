@@ -6,9 +6,7 @@
 
 <h2>Listagem</h2>
 
-<p>
-    @Html.ActionLink(ConstsWeb.DescricaoAcaoCadastar, ConstsWeb.AcaoCadastar)
-</p>
+@Html.Partial("~/Views/Shared/Partial/_ToolbarGrid.cshtml")
 <table class="table table-bordered table-striped">
     <tr>
         <th>
@@ -31,26 +29,26 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Cliente.Nome)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Servico.Nome)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Usuario.NomeCompleto)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DataAbertura)
-    </td>
-    <td>
-        @item.ValorTotal
-    </td>
-    <td>
-        @Html.Partial("~/Views/Shared/Partial/_AcoesGrid.cshtml", item)
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Servico.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.NomeCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataAbertura)
+            </td>
+            <td>
+                @item.ValorTotal
+            </td>
+            <td>
+                @Html.Partial("~/Views/Shared/Partial/_AcoesGrid.cshtml", item)
+            </td>
+        </tr>
     }
 
 </table>
