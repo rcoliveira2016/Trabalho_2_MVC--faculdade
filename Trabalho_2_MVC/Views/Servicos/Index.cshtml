@@ -9,6 +9,7 @@
 @Html.Partial("~/Views/Shared/Partial/_ToolbarGrid.cshtml")
 <table class="table table-bordered table-striped">
     <tr>
+        <th style="width: 146px;">Ação</th>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
@@ -18,12 +19,14 @@
         <th>
             @Html.DisplayNameFor(model => model.ValorUnitario)
         </th>
-        <th style="width: 146px;" >Ação</th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.Partial("~/Views/Shared/Partial/_AcoesGrid.cshtml", item)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
@@ -32,9 +35,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ValorUnitario)
-            </td>
-            <td>
-                @Html.Partial("~/Views/Shared/Partial/_AcoesGrid.cshtml", item)
             </td>
         </tr>
     }
