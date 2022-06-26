@@ -9,7 +9,7 @@ namespace Trabalho_2_MVC.Dominio.Entidades
     {        
         public virtual OrdemServico OrdemServico { get; set; }
         public virtual FormaPagamento FormaPagamento { get; set; }
-        public double ValorTotal { get; set; }
+        public decimal ValorTotal { get; set; }
 
         public static Pagamento Criar() => new Pagamento() { FormaPagamento = new FormaPagamento() };
 

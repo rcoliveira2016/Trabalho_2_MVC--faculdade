@@ -44,7 +44,7 @@ namespace Trabalho_2_MVC.Dominio.Entidades
         }
 
 
-        public double CalcularValorTotal()
+        public decimal CalcularValorTotal()
         {
             if (IdServico == 0)
                 return 0;
@@ -57,7 +57,7 @@ namespace Trabalho_2_MVC.Dominio.Entidades
             return Servico.ValorUnitario * Unitario;
         }
 
-        public double ObterValorUnitarioServico()
+        public decimal ObterValorUnitarioServico()
         {
             var servivoRepository = InMemory.GetService<IServicosRepositorio>();
             var valorUnitario = servivoRepository.BuscarPorId(IdServico).ValorUnitario;

@@ -27,7 +27,7 @@ namespace Trabalho_2_MVC.Dominio.Context
             modelBuilder.Configurations.Add(new PagamentoMap());
             modelBuilder.Configurations.Add(new ServicoMap());
             modelBuilder.Configurations.Add(new UsuarioMap());
-        }
+        }        
 
     }
 }

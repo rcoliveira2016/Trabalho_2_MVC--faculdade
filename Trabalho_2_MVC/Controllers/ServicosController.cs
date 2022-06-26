@@ -59,7 +59,7 @@ namespace Trabalho_2_MVC.Controllers
                 serviosRepositorio.Alterar(servico);
                 return RedirectToAction("Index");
             }
-            return View(servico);
+            return View("Cadastro", servico);
         }
 
 

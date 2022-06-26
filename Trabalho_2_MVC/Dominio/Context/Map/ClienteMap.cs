@@ -17,6 +17,7 @@ namespace Trabalho_2_MVC.Dominio.Context.Map
             Property(x => x.Endereco);
             Property(x => x.Nome);
             Property(x => x.Telefone);
+            
         }
     }
 }

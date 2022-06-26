@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.Descricao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ValorUnitario)
+                @item.ValorUnitario.ToString("C")
             </td>
         </tr>
     }

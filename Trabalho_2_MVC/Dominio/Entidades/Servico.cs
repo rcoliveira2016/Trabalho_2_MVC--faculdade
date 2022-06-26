@@ -15,9 +15,10 @@ namespace Trabalho_2_MVC.Dominio.Entidades
         [Display(Name = "Descrição")]
         [Required()]
         public string Descricao { get; set; }
+        [Required]
+        [DataType(DataType.Currency)]
         [Display(Name = "Valor unitário")]
-        [Required()]
-        public double ValorUnitario { get; set; }
+        public decimal ValorUnitario { get; set; }
         public virtual ICollection<OrdemServico> OrdensServicos { get; set; }
 
 

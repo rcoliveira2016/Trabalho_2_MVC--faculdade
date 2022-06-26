@@ -61,7 +61,7 @@ namespace Trabalho_2_MVC.Controllers
                 usuariosRepositorio.Alterar(usuario);
                 return RedirectToAction("Index");
             }
-            return View(usuario);
+            return View("Cadastro", usuario);
         }
 
 

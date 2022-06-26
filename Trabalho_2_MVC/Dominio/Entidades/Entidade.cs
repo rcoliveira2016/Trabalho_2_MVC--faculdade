@@ -41,6 +41,12 @@ namespace Trabalho_2_MVC.Dominio.Entidades
                 mensagens.Add(string.Format(MensagemCampoVazio, nomeCampo));
         }
 
+        public void ValidarCampo(List<string> mensagens, decimal campo, string nomeCampo)
+        {
+            if (campo == default(decimal))
+                mensagens.Add(string.Format(MensagemCampoVazio, nomeCampo));
+        }
+
         public void ValidarCampo(List<string> mensagens, DateTime campo, string nomeCampo)
         {
             if (campo == default(DateTime))
