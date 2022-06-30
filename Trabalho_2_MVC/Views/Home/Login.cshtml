@@ -83,12 +83,38 @@
                 list-style-type: none;
                 padding: 0;
             }
+
+        .notificar-info-login{
+            position: fixed;
+            transform: translate(-50%);
+            width: 500px;
+            left: 50%;
+            top:10px;
+            z-index:999;
+        }
+
+        .notificar-info-login__titlo{
+            font-size: 2.5rem;
+        }
     </style>
 </head>
 <body>
+    <div class="notificar-info-login alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong class="notificar-info-login__titlo">Informação</strong>
+        <br />
+        <div style="padding-top:10px">
+            <div><strong>Usuário:</strong> adm</div>
+            <div><strong>Senha:</strong> adm</div>
+        </div>
+        <hr />
+        <div>
+            <strong>Todos os outros usuários já cadastrados possuem a senha: <br/><i>dado-fake</i></strong> 
+        </div>
+    </div>
     <div class="container login-container">
         <div class="row" style="margin-top: 20px">
-            
+
             <div class="col-md-6 login-form-1">
                 <h3>Login</h3>
                 @using (Html.BeginForm("LoginUsuario", "Home"))
@@ -114,7 +140,7 @@
                 <h3>Cadastro</h3>
                 @using (Html.BeginForm("CadastrarUsuario", "Home"))
                 {
-                    @Html.ValidationSummary(true, "", new {@class= "alert alert-danger text-danger" })
+                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger text-danger" })
                     <div class="form-group">
                         <input type="text" name="NomeCompleto" class="form-control" placeholder="Nome completo" value="" />
                     </div>

@@ -197,6 +197,10 @@
     <Compile Include="Migrations\202206261826052_MIGRATION_3.designer.cs">
       <DependentUpon>202206261826052_MIGRATION_3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206281317267_PopularDados.cs" />
+    <Compile Include="Migrations\202206281317267_PopularDados.designer.cs">
+      <DependentUpon>202206281317267_PopularDados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -292,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206261826052_MIGRATION_3.resx">
       <DependentUpon>202206261826052_MIGRATION_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206281317267_PopularDados.resx">
+      <DependentUpon>202206281317267_PopularDados.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

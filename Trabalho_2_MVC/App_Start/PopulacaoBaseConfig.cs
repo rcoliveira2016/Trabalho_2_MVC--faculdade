@@ -17,7 +17,7 @@ namespace Trabalho_2_MVC.App_Start
         private static readonly IClientesRepositorio clienteRepositorio;
         private static readonly IServicosRepositorio serviosRepositorio;
         private static readonly IUsuariosRepositorio usuariosRepositorio;
-        private const int QUANTIDADE_ITENS_FAKE = 7;
+        private const int QUANTIDADE_ITENS_FAKE = 15;
 
         static PopulacaoBaseConfig()
         {

@@ -23,13 +23,8 @@ namespace Trabalho_2_MVC
             ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
 
             CriarInjecaoDepedencia();
-            CriarDadosIniciasPrimeiravez();
         }
 
-        private void CriarDadosIniciasPrimeiravez()
-        {
-            PopulacaoBaseConfig.CriarDados();
-        }
 
         private void CriarInjecaoDepedencia()
         {
