@@ -57,13 +57,13 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.NumeroCartão, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.NumeroCartão, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.NumeroCartão, new { htmlAttributes = new { @class = "form-control" , @readonly = !Model.RegistroNovo} })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.CodigoSegurança, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.CodigoSegurança, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.CodigoSegurança, new { htmlAttributes = new { @class = "form-control", @readonly = !Model.RegistroNovo } })
                     </div>
                 </div>
             </div>
